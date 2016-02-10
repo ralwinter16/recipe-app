@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @recipe_book.title %>
+</p>
+
+<p>
+  <strong>Instructions:</strong>
+  <%= @recipe_book.instructions %>
+</p>
+
+<p>
+  <strong>Ingredients:</strong>
+  <%= @recipe_book.ingredients %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @recipe_book.rating %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @recipe_book.user.email %>
+</p>
+
+<%= image_tag @recipe_book.photo.url(:medium) %>
+
+<%= link_to 'Edit', edit_recipe_book_path(@recipe_book) %> |
+<%= link_to 'Back', recipe_books_path %>
+
+
+<%= render 'comments/form' %>
+
+<br />
+
+<% @recipe_book.comments.each do |comment| %>
+  <h2><%= comment.entry %></h2>
+  <p>
+  by <%= comment.user.email %>
+  </p>
+<% end %>
